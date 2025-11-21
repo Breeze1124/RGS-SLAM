@@ -16,3 +16,15 @@ Dataset:
     height: 480
     depth_scale: 5000.0
     distorted: False
+
+EDGS:
+  use: True
+  matches_per_ref: 200
+  num_refs: 1
+  nns_per_ref: 3
+  scaling_factor: 0.001
+  proj_err_tolerance: 0.01
+  roma_model: "indoors"  # 或 "indoor"
+  add_SfM_init: False
+  scale_factor: 0.8
+  verbose: False
