@@ -44,8 +44,23 @@ RGS-SLAM/
 ```
 
 ---
+## 4. Architecture Overview
 
-## 4. Installation
+<p align="center">
+  <img src="figures/method.png" width="90%">
+</p>
+
+RGS-SLAM follows a keyframe-based architecture that couples dense multi-view initialization with a differentiable 3D Gaussian splatting backend. The system maintains a global map of anisotropic Gaussians and alternates between front-end tracking and back-end mapping while keeping the topology of the Gaussian set fixed between keyframes.
+
+At the front end, incoming frames are tracked against the current Gaussian map using analytic SE(3) Jacobians and a robust photometric objective. Keyframe selection is driven by a visibility- and parallax-aware policy that promotes frames only when they provide sufficient novel coverage. Once a frame is accepted as a keyframe, the system extracts dense DINOv3 features, forms confidence-weighted multi-view correspondences, and performs triangulation to obtain a set of 3D points with baseline-aware uncertainty.
+
+These triangulated points serve as the seed for one-shot Gaussian initialization. Each point is converted into an anisotropic Gaussian with a mean at the triangulated position, a covariance aligned to the local tangent–normal frame, and an opacity proportional to correspondence confidence. This initialization produces a well-distributed and structure-aware Gaussian map before any iterative refinement, which stabilizes early optimization and reduces the need for residual-driven densification.
+
+At the back end, RGS-SLAM jointly refines camera poses and Gaussian parameters over a sliding keyframe window. Gradients are propagated through the 3DGS renderer, and the optimization is regularized by covariance priors, opacity constraints, and an exponential moving average that anchors early estimates. Lightweight Gaussian merging and pruning keep the representation compact while preserving fine structures, leading to fast convergence, high rendering fidelity, and accurate trajectories on both TUM RGB-D and Replica scenes.
+
+---
+
+## 5. Installation
 
 We recommend creating a dedicated conda environment:
 
@@ -67,7 +82,7 @@ For hardware and software details (GPU, CUDA, PyTorch version, etc.), please ref
 
 ---
 
-## 5. Datasets
+## 6. Datasets
 
 RGS-SLAM is evaluated on TUM RGB-D and Replica indoor scenes, following the splits described in the paper (TUM fr1/desk, fr2/xyz, fr3/office and Replica room0–2, office0–4).
 
@@ -101,7 +116,7 @@ RGS-SLAM is evaluated on TUM RGB-D and Replica indoor scenes, following the spli
 
 ---
 
-## 6. Quick Start
+## 7. Quick Start
 
 Once the environment and datasets are prepared, RGS-SLAM can be launched with a single command.  
 Below are example invocations; adjust the config paths to match your setup.
@@ -121,31 +136,25 @@ By default, tracking runs in real time, and mapping is executed asynchronously w
 
 ---
 
-## 7. Reproducing Paper Results
+## 8. Qualitative Results
 
-The configs provided in `configs/` are organized to reproduce the main tables in the paper.
+<p align="center">
+  <img src="figures/Tracking.png" width="90%">
+</p>
 
-- **Training time and convergence (Table 1)**  
-  - TUM RGB-D sequences fr1/desk, fr2/xyz, fr3/office using the RGB-D configs in `configs/rgbd/`.
+The figure illustrates RGS-SLAM tracking on a Replica room0 sequence.  
+Ground-truth trajectories are drawn in red and RGS-SLAM predictions in green, shown from both top-down and oblique viewpoints. The alignment between the two curves demonstrates that the one-shot Gaussian initialization preserves global consistency even under long and cluttered trajectories.
 
-- **Localization accuracy (Tables 2 and 3)**  
-  - Replica room0–2, office0–4 (RGB-D)  
-  - TUM RGB-D fr1/desk, fr2/xyz, fr3/office.
+<p align="center">
+  <img src="figures/render_result" width="100%">
+</p>
 
-- **Rendering quality and throughput (Tables 4 and 5)**  
-  - Replica scenes and TUM RGB-D with the same configs, evaluated with PSNR / SSIM / LPIPS and FPS.
-
-- **Reconstruction metrics (Table 6)**  
-  - Replica reconstruction is computed from exported Gaussian maps using the standard Acc./Comp./Comp.Ratio protocol.
-
-- **Ablation study (Table 7, Figure 5)**  
-  - Variants that disable dense initialization or vary the number of Gaussians per keyframe are provided as separate configs or flags.
-
-Each experiment in the paper is run three times with identical settings, and mean values are reported. Evaluation scripts for ATE, rendering metrics, and reconstruction statistics are provided under `scripts/` and `utils/`.
+This figure shows novel-view rendering examples on the TUM RGB sequence.  
+RGS-SLAM recovers sharper edges, fewer transparency artifacts, and more stable background structures than residual-driven Gaussian SLAM baselines, while maintaining accurate object shapes across different viewpoints.
 
 ---
 
-## 8. Citation
+## 9. Citation
 
 If you find this work useful in your research, please consider citing the paper:
 
