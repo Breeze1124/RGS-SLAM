@@ -146,7 +146,7 @@ The figure illustrates RGS-SLAM tracking on a Replica room0 sequence.
 Ground-truth trajectories are drawn in red and RGS-SLAM predictions in green, shown from both top-down and oblique viewpoints. The alignment between the two curves demonstrates that the one-shot Gaussian initialization preserves global consistency even under long and cluttered trajectories.
 
 <p align="center">
-  <img src="figures/render_result" width="100%">
+  <img src="figures/render_result.png" width="100%">
 </p>
 
 This figure shows novel-view rendering examples on the TUM RGB sequence.  
