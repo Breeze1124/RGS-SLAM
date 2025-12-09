@@ -2,13 +2,7 @@
 
 ---
 
-## 1. Abstract
-
-We introduce RGS-SLAM, a robust Gaussian-splatting SLAM framework that replaces the residual-driven densification stage of GS-SLAM with a training-free correspondence-to-Gaussian initialization. Instead of progressively adding Gaussians as residuals reveal missing geometry, RGS-SLAM performs a one-shot triangulation of dense multi-view correspondences derived from DINOv3 descriptors refined through a confidence-aware inlier classifier, generating a well-distributed and structure-aware Gaussian seed prior to optimization. This initialization stabilizes early mapping and accelerates convergence by roughly 20%, yielding higher rendering fidelity in texture-rich and cluttered scenes while remaining fully compatible with existing GS-SLAM pipelines. Evaluated on the TUM RGB-D and Replica datasets, RGS-SLAM achieves competitive or superior localization and reconstruction accuracy compared with state-of-the-art Gaussian and point-based SLAM systems, sustaining real-time mapping performance at up to 925 FPS.
-
----
-
-## 2. Overview
+## 1. Overview
 
 <p align="center">
   <img src="figures/domain.png" width="80%">
@@ -19,7 +13,7 @@ Keyframes trigger dense DINOv3 feature extraction, confidence-weighted multi-vie
 
 ---
 
-## 3. Repository Structure
+## 2. Repository Structure
 
 ```text
 RGS-SLAM/
@@ -82,41 +76,7 @@ For hardware and software details (GPU, CUDA, PyTorch version, etc.), please ref
 
 ---
 
-## 6. Datasets
-
-RGS-SLAM is evaluated on TUM RGB-D and Replica indoor scenes, following the splits described in the paper (TUM fr1/desk, fr2/xyz, fr3/office and Replica room0–2, office0–4).
-
-1. **TUM RGB-D**
-
-   - Download sequences from the official TUM RGB-D website.  
-   - Organize them under a root directory, for example:
-     ```text
-     /path/to/data/tum_rgbd/
-       ├── fr1_desk/
-       ├── fr2_xyz/
-       └── fr3_office/
-     ```
-   - Update the corresponding entries in the YAML configs under `configs/mono/` or `configs/rgbd/` so that they point to your local data path.
-
-2. **Replica**
-
-   - Obtain the Replica dataset from the official release and extract the indoor scenes:
-     ```text
-     /path/to/data/replica/
-       ├── room0/
-       ├── room1/
-       ├── room2/
-       ├── office0/
-       ├── office1/
-       ├── office2/
-       ├── office3/
-       └── office4/
-     ```
-   - Set the dataset root in the Replica configs in `configs/rgbd/`.
-
----
-
-## 7. Quick Start
+## 6. Quick Start
 
 Once the environment and datasets are prepared, RGS-SLAM can be launched with a single command.  
 Below are example invocations; adjust the config paths to match your setup.
@@ -136,25 +96,7 @@ By default, tracking runs in real time, and mapping is executed asynchronously w
 
 ---
 
-## 8. Qualitative Results
-
-<p align="center">
-  <img src="figures/Tracking.png" width="90%">
-</p>
-
-The figure illustrates RGS-SLAM tracking on a Replica room0 sequence.  
-Ground-truth trajectories are drawn in red and RGS-SLAM predictions in green, shown from both top-down and oblique viewpoints. The alignment between the two curves demonstrates that the one-shot Gaussian initialization preserves global consistency even under long and cluttered trajectories.
-
-<p align="center">
-  <img src="figures/render_result.png" width="100%">
-</p>
-
-This figure shows novel-view rendering examples on the TUM RGB sequence.  
-RGS-SLAM recovers sharper edges, fewer transparency artifacts, and more stable background structures than residual-driven Gaussian SLAM baselines, while maintaining accurate object shapes across different viewpoints.
-
----
-
-## 9. Citation
+## 6. Citation
 
 If you find this work useful in your research, please consider citing the paper:
 
