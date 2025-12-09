@@ -70,7 +70,7 @@ Running the following scripts will automatically download datasets to the `./dat
 
 ```bash
 bash scripts/download_tum.sh
-
+```
 
 ---
 
