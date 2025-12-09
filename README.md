@@ -38,23 +38,9 @@ RGS-SLAM/
 ```
 
 ---
-## 4. Architecture Overview
 
-<p align="center">
-  <img src="figures/method.png" width="90%">
-</p>
 
-RGS-SLAM follows a keyframe-based architecture that couples dense multi-view initialization with a differentiable 3D Gaussian splatting backend. The system maintains a global map of anisotropic Gaussians and alternates between front-end tracking and back-end mapping while keeping the topology of the Gaussian set fixed between keyframes.
-
-At the front end, incoming frames are tracked against the current Gaussian map using analytic SE(3) Jacobians and a robust photometric objective. Keyframe selection is driven by a visibility- and parallax-aware policy that promotes frames only when they provide sufficient novel coverage. Once a frame is accepted as a keyframe, the system extracts dense DINOv3 features, forms confidence-weighted multi-view correspondences, and performs triangulation to obtain a set of 3D points with baseline-aware uncertainty.
-
-These triangulated points serve as the seed for one-shot Gaussian initialization. Each point is converted into an anisotropic Gaussian with a mean at the triangulated position, a covariance aligned to the local tangent–normal frame, and an opacity proportional to correspondence confidence. This initialization produces a well-distributed and structure-aware Gaussian map before any iterative refinement, which stabilizes early optimization and reduces the need for residual-driven densification.
-
-At the back end, RGS-SLAM jointly refines camera poses and Gaussian parameters over a sliding keyframe window. Gradients are propagated through the 3DGS renderer, and the optimization is regularized by covariance priors, opacity constraints, and an exponential moving average that anchors early estimates. Lightweight Gaussian merging and pruning keep the representation compact while preserving fine structures, leading to fast convergence, high rendering fidelity, and accurate trajectories on both TUM RGB-D and Replica scenes.
-
----
-
-## 5. Installation
+## 3. Installation
 
 We recommend creating a dedicated conda environment:
 
@@ -76,7 +62,22 @@ For hardware and software details (GPU, CUDA, PyTorch version, etc.), please ref
 
 ---
 
-## 6. Quick Start
+## 4. Downloading Datasets
+
+Running the following scripts will automatically download datasets to the `./datasets` folder.
+
+# TUM-RGBD dataset
+
+```bash
+bash scripts/download_tum.sh
+
+# Replica dataset
+
+```bash
+bash scripts/download_replica.sh
+---
+
+## 5. Quick Start
 
 Once the environment and datasets are prepared, RGS-SLAM can be launched with a single command.  
 Below are example invocations; adjust the config paths to match your setup.
