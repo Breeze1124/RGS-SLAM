@@ -72,6 +72,12 @@ Running the following scripts will automatically download datasets to the `./dat
 bash scripts/download_tum.sh
 ```
 
+### Replica dataset
+
+```bash
+bash scripts/download_replica.sh
+```
+
 ---
 
 ## 5. Quick Start
