@@ -66,15 +66,12 @@ For hardware and software details (GPU, CUDA, PyTorch version, etc.), please ref
 
 Running the following scripts will automatically download datasets to the `./datasets` folder.
 
-# TUM-RGBD dataset
+### TUM-RGBD dataset
 
 ```bash
 bash scripts/download_tum.sh
 
-# Replica dataset
 
-```bash
-bash scripts/download_replica.sh
 ---
 
 ## 5. Quick Start
