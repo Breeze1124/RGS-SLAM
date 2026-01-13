@@ -8,7 +8,6 @@
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Paper-ffc107?color=ffc107&labelColor=gray)](https://huggingface.co/papers/2601.00705)
 
 </div>
----
 
 ## 1. Overview
 
