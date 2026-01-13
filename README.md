@@ -3,7 +3,7 @@
 [![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://breeze1124.github.io/rgs-slam-project-page/)
 [![Paper](https://img.shields.io/badge/Paper-PDF-gray)](https://arxiv.org/abs/2601.00705)
 [![arXiv](https://img.shields.io/badge/arXiv-2512.20387-b31b1b.svg)](https://arxiv.org/pdf/2601.00705)
-[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Paper-ffc107?color=ffc107&labelColor=black)](https://huggingface.co/papers/2601.00705)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Paper-ffc107?color=ffc107&labelColor=gray)](https://huggingface.co/papers/2601.00705)
 ---
 
 ## 1. Overview
@@ -104,17 +104,26 @@ By default, tracking runs in real time, and mapping is executed asynchronously w
 
 ---
 
-## 6. Citation
+## License
 
-If you find this work useful in your research, please consider citing the paper:
+This repository is released under the MIT License (see LICENSE).
 
-```bibtex
-@inproceedings{rgs-slam-2026,
-  title     = {RGS-SLAM: Robust Gaussian Splatting SLAM with One-Shot Dense Initialization},
-  author    = {Anonymous},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  year      = {2026}
-}
-```
+## Model Usage Notice
 
-(The author list will be updated after the review process.)
+The models, model weights, checkpoints, and any generated outputs
+associated with this project are released for academic research
+and educational purposes only.
+
+Commercial use, including but not limited to use in for-profit
+products, services, internal industrial deployment, or technology
+transfer, is strictly prohibited without prior written permission
+from the authors.
+
+Please contact the authors for commercial licensing inquiries.
+
+## Contact
+If you have any questions, feedback, or are interested in collaboration, feel free to reach out through the following channels:
+
+🌐 Project Page: https://breeze1124.github.io/rgs-slam-project-page/
+📧 Email: andy5552555.ii13@nycu.edu.tw
+💼 LinkedIn: https://www.linkedin.com/in/chengweitse/
