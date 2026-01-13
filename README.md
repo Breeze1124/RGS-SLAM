@@ -1,9 +1,11 @@
 # RGS-SLAM: Robust Gaussian Splatting SLAM with One-Shot Dense Initialization
 
+<div align="center">
 [![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://breeze1124.github.io/rgs-slam-project-page/)
 [![Paper](https://img.shields.io/badge/Paper-PDF-gray)](https://arxiv.org/abs/2601.00705)
 [![arXiv](https://img.shields.io/badge/arXiv-2512.20387-b31b1b.svg)](https://arxiv.org/pdf/2601.00705)
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Paper-ffc107?color=ffc107&labelColor=gray)](https://huggingface.co/papers/2601.00705)
+</div>
 ---
 
 ## 1. Overview
@@ -124,6 +126,7 @@ Please contact the authors for commercial licensing inquiries.
 ## Contact
 If you have any questions, feedback, or are interested in collaboration, feel free to reach out through the following channels:
 
-🌐 Project Page: https://breeze1124.github.io/rgs-slam-project-page/
-📧 Email: andy5552555.ii13@nycu.edu.tw
-💼 LinkedIn: https://www.linkedin.com/in/chengweitse/
+🌐 Project Page: https://breeze1124.github.io/rgs-slam-project-page/  
+📧 Email: andy5552555.ii13@nycu.edu.tw  
+💼 LinkedIn: https://www.linkedin.com/in/chengweitse/  
+
