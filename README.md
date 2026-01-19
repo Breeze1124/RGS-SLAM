@@ -121,10 +121,4 @@ from the authors.
 
 Please contact the authors for commercial licensing inquiries.
 
-## Contact
-If you have any questions, feedback, or are interested in collaboration, feel free to reach out through the following channels:
-
-🌐 Project Page: #  
-📧 Email: andy5552555.ii13@nycu.edu.tw  
-💼 LinkedIn: https://www.linkedin.com/in/chengweitse/  
 
