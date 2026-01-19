@@ -47,16 +47,4 @@ These datasets are **not** included in this repository and remain the property o
 
 You must obtain the datasets from their official sources and follow their individual licenses and usage policies. This repository does not grant you any rights to redistribute these datasets or to use them beyond what their original licenses allow.
 
----
 
-## 5. Citation
-
-If you use this codebase, or any derivative of it, in academic work, please cite the RGS-SLAM paper:
-
-```bibtex
-@inproceedings{rgs-slam-2026,
-  title     = {RGS-SLAM: Robust Gaussian Splatting SLAM with One-Shot Dense Initialization},
-  author    = {Anonymous},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  year      = {2026}
-}
